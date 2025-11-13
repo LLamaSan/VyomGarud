@@ -1,14 +1,17 @@
+import React from 'react'; 
+
 export interface Capability {
-  id: number;
+  id: number | string; 
   title: string;
   description: string;
-  icon: string;
+  icon: React.ReactNode; 
 }
 
 export interface Highlight {
-  id: number;
+  id: number | string; 
   title: string;
   description: string;
+  icon: React.ReactNode; 
 }
 
 export interface CompanyInfo {

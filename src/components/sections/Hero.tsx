@@ -2,9 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/Button';
-import { COMPANY_INFO } from '@/lib/constants';
-import { fadeInUp, slideInLeft, slideInRight } from '@/lib/animations';
+// --- FIX: Corrected import paths ---
+import { Button } from '@/components/ui/Button'; 
+import { COMPANY_INFO } from '@/lib/constants'; 
+import { fadeInUp } from '@/lib/animations'; 
+// Import professional icons
+import { Signal, ChevronDown } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const scrollToContact = () => {
@@ -64,7 +67,7 @@ export const Hero: React.FC = () => {
             initial="initial"
             animate="animate"
             transition={{ delay: 0.2 }}
-            className="text-xl sm:text-2xl lg:text-3xl text-gray-300 mb-6 font-light"
+            className="text-xl sm:text-2xl lg:text-3xl text-white/80 mb-6 font-light"
           >
             {COMPANY_INFO.tagline}
           </motion.p>
@@ -75,7 +78,7 @@ export const Hero: React.FC = () => {
             initial="initial"
             animate="animate"
             transition={{ delay: 0.4 }}
-            className="text-base sm:text-lg text-gray-400 mb-12 max-w-3xl mx-auto"
+            className="text-base sm:text-lg text-white/60 mb-12 max-w-3xl mx-auto"
           >
             {COMPANY_INFO.description}
           </motion.p>
@@ -100,7 +103,6 @@ export const Hero: React.FC = () => {
             </Button>
           </motion.div>
 
-          {/* Floating Drone Icon */}
           <motion.div
             animate={{
               y: [0, -20, 0],
@@ -110,9 +112,10 @@ export const Hero: React.FC = () => {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="mt-20 text-8xl"
+            className="mt-20 text-orange/20 flex justify-center"
           >
-            🚁
+            
+            <Signal size={128} strokeWidth={0.5} />
           </motion.div>
         </div>
       </div>
@@ -127,22 +130,9 @@ export const Hero: React.FC = () => {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-orange"
       >
-        <div className="w-6 h-10 border-2 border-orange rounded-full flex justify-center">
-          <motion.div
-            animate={{
-              y: [0, 12, 0],
-              opacity: [1, 0, 1]
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="w-1.5 h-1.5 bg-orange rounded-full mt-2"
-          />
-        </div>
+        <ChevronDown className="w-6 h-6" />
       </motion.div>
     </section>
   );

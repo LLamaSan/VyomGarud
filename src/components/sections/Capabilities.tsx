@@ -45,7 +45,7 @@ export const Capabilities: React.FC = () => {
         <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white/90">
           Our <span className="gradient-text">Capabilities</span>
         </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-charcoal-light via-orange to-charcoal-light mx-auto mb-6"></div>
+        <div className="w-24 h-1 bg-linear-to-r from-charcoal-light via-orange to-charcoal-light mx-auto mb-6"></div>
         <p className="text-white/60 max-w-2xl mx-auto">
           Cutting-edge UAV solutions engineered for the most demanding operational requirements
         </p>

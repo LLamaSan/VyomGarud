@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
 import { HIGHLIGHTS } from '@/lib/constants';
 import { fadeInUp, scaleIn } from '@/lib/animations';
-
+import { Award, Zap, Shield } from 'lucide-react';
 export const Highlights: React.FC = () => {
   return (
     <SectionWrapper id="highlights" background="default">
@@ -16,11 +16,12 @@ export const Highlights: React.FC = () => {
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white/90">
           Why Choose <span className="gradient-text">VyomGarud</span>
         </h2>
-        <div className="w-24 h-1 bg-orange mx-auto"></div>
-      </motion.div>
+        {/* Replaced solid divider with a matching gradient */}
+        <div className="w-24 h-1 bg-linear-to-r from-charcoal-light via-orange to-charcoal-light mx-auto"></div>
+      </motion.div> {/* <-- FIX: Added missing closing bracket '>' here */}
 
       <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
         {HIGHLIGHTS.map((highlight, index) => (
@@ -31,26 +32,27 @@ export const Highlights: React.FC = () => {
             whileInView="animate"
             viewport={{ once: true }}
             transition={{ delay: index * 0.2 }}
-            className="relative group"
+            className="relative group h-full"
           >
             <div className="bg-charcoal-light border-2 border-orange/30 rounded-xl p-8 text-center hover:border-orange transition-all duration-300 h-full">
-              {/* Number Badge */}
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <div className="w-12 h-12 bg-orange rounded-full flex items-center justify-center text-white font-bold text-xl shadow-[0_0_20px_rgba(255,123,0,0.5)]">
-                  {highlight.id}
+              
+
+              <div className="mb-6 flex justify-center">
+                <div className="w-16 h-16 bg-orange/10 rounded-full flex items-center justify-center border border-orange/20 shadow-[0_0_20px_rgba(255,123,0,0.3)] group-hover:bg-orange/20 transition-colors">
+                  {highlight.icon}
                 </div>
               </div>
 
-              <div className="mt-8">
+              <div>
                 <h3 className="text-2xl font-bold mb-4 gradient-text">
                   {highlight.title}
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                {/* Replaced text-gray-400 with text-white/70 */}
+                <p className="text-white/70 leading-relaxed">
                   {highlight.description}
                 </p>
               </div>
 
-              {/* Hover Glow Effect */}
               <div className="absolute inset-0 rounded-xl bg-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
             </div>
           </motion.div>

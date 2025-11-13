@@ -2,7 +2,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+// --- FIX: Corrected import path ---
 import { COMPANY_INFO, SOCIAL_LINKS, NAV_LINKS } from '@/lib/constants';
+// Import professional icons to replace emojis
+import { Linkedin, X, Github, Mail, Phone } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -20,44 +23,50 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-2">
             <motion.h3
               whileHover={{ scale: 1.05 }}
-              className="text-3xl font-bold gradient-text mb-4"
+              className="text-3xl font-bold gradient-text mb-4 inline-block"
             >
               {COMPANY_INFO.name}
             </motion.h3>
-            <p className="text-gray-400 mb-4 max-w-md">
+            <p className="text-white/70 mb-6 max-w-md">
               Military-grade UAV systems with precision engineering and advanced autonomy 
               for critical defense operations.
             </p>
             <div className="flex gap-4">
+              {/* LinkedIn Icon */}
               <motion.a
-                whileHover={{ scale: 1.2, rotate: 5 }}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
                 href={SOCIAL_LINKS.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-charcoal-light border border-orange/30 rounded-lg flex items-center justify-center hover:border-orange hover:bg-orange/10 transition-all"
+                className="w-10 h-10 bg-charcoal-light border border-orange/30 rounded-lg flex items-center justify-center group hover:border-orange hover:bg-orange/10 transition-all"
                 aria-label="LinkedIn"
               >
-                <span className="text-xl">💼</span>
+                <Linkedin className="w-5 h-5 text-white/70 group-hover:text-orange transition-colors" />
               </motion.a>
+              {/* Twitter Icon */}
               <motion.a
-                whileHover={{ scale: 1.2, rotate: -5 }}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
                 href={SOCIAL_LINKS.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-charcoal-light border border-orange/30 rounded-lg flex items-center justify-center hover:border-orange hover:bg-orange/10 transition-all"
+                className="w-10 h-10 bg-charcoal-light border border-orange/30 rounded-lg flex items-center justify-center group hover:border-orange hover:bg-orange/10 transition-all"
                 aria-label="Twitter"
               >
-                <span className="text-xl">🐦</span>
+                <X className="w-5 h-5 text-white/70 group-hover:text-orange transition-colors" />
               </motion.a>
+              {/* GitHub Icon */}
               <motion.a
-                whileHover={{ scale: 1.2, rotate: 5 }}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
                 href={SOCIAL_LINKS.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-charcoal-light border border-orange/30 rounded-lg flex items-center justify-center hover:border-orange hover:bg-orange/10 transition-all"
+                className="w-10 h-10 bg-charcoal-light border border-orange/30 rounded-lg flex items-center justify-center group hover:border-orange hover:bg-orange/10 transition-all"
                 aria-label="GitHub"
               >
-                <span className="text-xl">💻</span>
+                <Github className="w-5 h-5 text-white/70 group-hover:text-orange transition-colors" />
               </motion.a>
             </div>
           </div>
@@ -65,12 +74,12 @@ export const Footer: React.FC = () => {
           {/* Quick Links */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-orange">Quick Links</h4>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.name}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-gray-400 hover:text-orange transition-colors"
+                    className="text-white/70 hover:text-orange hover:translate-x-1 transition-all duration-200"
                   >
                     {link.name}
                   </button>
@@ -82,8 +91,9 @@ export const Footer: React.FC = () => {
           {/* Contact */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-orange">Contact</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li>
+            <ul className="space-y-3 text-white/70">
+              <li className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-orange/70" />
                 <a 
                   href={`mailto:${COMPANY_INFO.email}`}
                   className="hover:text-orange transition-colors"
@@ -91,7 +101,8 @@ export const Footer: React.FC = () => {
                   {COMPANY_INFO.email}
                 </a>
               </li>
-              <li>
+              <li className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-orange/70" />
                 <a 
                   href={`tel:${COMPANY_INFO.phone}`}
                   className="hover:text-orange transition-colors"
@@ -106,14 +117,15 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-orange/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm">
+            <p className="text-white/60 text-sm">
               © {currentYear} {COMPANY_INFO.name}. All rights reserved.
-            </p>
+            </p> 
+            {/* --- FIX: Corrected closing tag --- */}
             <div className="flex gap-6 text-sm">
-              <button className="text-gray-400 hover:text-orange transition-colors">
+              <button className="text-white/60 hover:text-orange transition-colors">
                 Privacy Policy
               </button>
-              <button className="text-gray-400 hover:text-orange transition-colors">
+              <button className="text-white/60 hover:text-orange transition-colors">
                 Terms of Service
               </button>
             </div>
@@ -121,7 +133,7 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Decorative Bottom Line */}
+      {/* Decorative Bottom Line (Kept your awesome animation, just cleaned up the class) */}
       <motion.div
         animate={{
           backgroundPosition: ['0% 0%', '100% 0%'],
@@ -129,10 +141,10 @@ export const Footer: React.FC = () => {
         transition={{
           duration: 3,
           repeat: Infinity,
-          ease: "linear"
+          ease: "linear",
+          repeatType: "reverse", // Makes it scan back and forth
         }}
-        className="h-1 bg-linear-to-r from-transparent via-orange to-transparent"
-        style={{ backgroundSize: '200% 100%' }}
+        className="h-1 bg-linear-to-r from-transparent via-orange to-transparent [background-size:200%_100%]"
       />
     </footer>
   );

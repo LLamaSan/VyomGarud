@@ -55,7 +55,7 @@ export const Contact: React.FC = () => {
         <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white/90">
           Get in <span className="gradient-text">Touch</span>
         </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-charcoal-light via-orange to-charcoal-light mx-auto mb-6"></div>
+        <div className="w-24 h-1 bg-linear-to-r from-charcoal-light via-orange to-charcoal-light mx-auto mb-6"></div>
         <p className="text-white/60 max-w-2xl mx-auto">
           Ready to elevate your defense capabilities? Contact us to discuss your requirements
         </p>

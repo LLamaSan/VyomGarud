@@ -22,7 +22,7 @@ export const About: React.FC = () => {
             About <span className="gradient-text">VyomGarud</span>
           </h2>
           {/* This subtle divider is more professional than a solid color */}
-          <div className="w-24 h-1 bg-gradient-to-r from-charcoal-light via-orange to-charcoal-light mx-auto"></div>
+          <div className="w-24 h-1 bg-linear-to-r from-charcoal-light via-orange to-charcoal-light mx-auto"></div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
