@@ -94,3 +94,25 @@ export const cardHover: Variants = {
     }
   }
 };
+
+export const popIn: Variants = {
+  initial: { opacity: 0, scale: 0.9, y: 20 },
+  animate: { 
+    opacity: 1, 
+    scale: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+export const staggerChildren: Variants = {
+  initial: {},
+  animate: {
+    transition: { staggerChildren: 0.15 }
+  }
+};
+
+export const childFadeUp: Variants = {
+  initial: { opacity: 0, y: 15 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+};

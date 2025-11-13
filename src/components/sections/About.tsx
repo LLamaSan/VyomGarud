@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
-import { fadeInUp, slideInLeft, slideInRight } from '@/lib/animations';
+import { childFadeUp, fadeInUp, popIn, slideInLeft, slideInRight, staggerChildren } from '@/lib/animations';
 // Import professional icons to replace emojis
 import { Target, Zap, Shield } from 'lucide-react';
 
@@ -25,77 +25,97 @@ export const About: React.FC = () => {
           <div className="w-24 h-1 bg-linear-to-r from-charcoal-light via-orange to-charcoal-light mx-auto"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            variants={slideInLeft}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-semibold mb-4 text-orange">
-              Our Mission
-            </h3>
-            {/* Using text-white with opacity looks cleaner than text-gray */}
-            <p className="text-white/70 leading-relaxed mb-6">
-              VyomGarud is at the forefront of unmanned aerial vehicle technology, 
-              delivering military-grade solutions that redefine precision, reliability, 
-              and autonomous capabilities in critical defense operations.
-            </p>
-            <p className="text-white/70 leading-relaxed">
-              We engineer UAV systems that operate seamlessly in the most challenging 
-              environments, providing strategic advantages through cutting-edge artificial 
-              intelligence and robust hardware design.
-            </p>
-          </motion.div>
+        <div className="grid md:grid-cols-2 gap-12 items-stretch">
+  {/* --- Left Card: Our Mission --- */}
+  <motion.div
+    variants={{
+      hidden: { opacity: 0, x: -100 },
+      show: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 70, damping: 15 } },
+    }}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    className="relative bg-charcoal/60 backdrop-blur-md border border-orange/30 rounded-2xl p-8 shadow-[0_0_20px_rgba(255,123,0,0.15)] overflow-hidden flex flex-col justify-between h-full"
+  >
+    {/* Radar grid overlay */}
+    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(255,123,0,0.25)_0%,transparent_70%)] pointer-events-none"></div>
 
-          <motion.div
-            variants={slideInRight}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="relative"
-          >
-            {/* The glow-border is great. We'll add a 'group' utility for hover effects */}
-            <div className="bg-charcoal-light border border-orange/30 rounded-xl p-8 glow-border group">
-              <div className="space-y-6">
-                
-                {/* Replaced 🎯 with Lucide 'Target' icon */}
-                <div className="flex items-start gap-4">
-                  <Target className="w-8 h-8 text-orange/70 group-hover:text-orange transition-colors duration-300" />
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2 text-white/90">Strategic Excellence</h4>
-                    <p className="text-white/60 text-sm">
-                      Purpose-built systems for mission-critical operations
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Replaced ⚡ with Lucide 'Zap' icon */}
-                <div className="flex items-start gap-4">
-                  <Zap className="w-8 h-8 text-orange/70 group-hover:text-orange transition-colors duration-300" />
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2 text-white/90">Rapid Deployment</h4>
-                    <p className="text-white/60 text-sm">
-                      Quick response capabilities for time-sensitive scenarios
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Replaced 🛡️ with Lucide 'Shield' icon */}
-                <div className="flex items-start gap-4">
-                  <Shield className="w-8 h-8 text-orange/70 group-hover:text-orange transition-colors duration-300" />
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2 text-white/90">Unmatched Security</h4>
-                    <p className="text-white/60 text-sm">
-                      Encrypted communications and secure data handling
-                    </p>
-                  </div>
-                </div>
+    {/* Scanning line */}
+    <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-orange/40 to-transparent animate-scan"></div>
 
-              </div>
-            </div>
-          </motion.div>
+    {/* Mission text */}
+    <div className="relative z-10 flex flex-col justify-center h-full">
+      <h3 className="text-2xl font-semibold mb-4 text-orange flex items-center gap-2">
+        <span className="w-2 h-2 bg-orange rounded-full animate-pulse"></span>
+        Our Mission
+      </h3>
+      <p className="text-white/70 leading-relaxed mb-6">
+        VyomGarud is at the forefront of unmanned aerial vehicle technology,
+        delivering military-grade solutions that redefine precision, reliability,
+        and autonomous capabilities in critical defense operations.
+      </p>
+      <p className="text-white/70 leading-relaxed">
+        We engineer UAV systems that operate seamlessly in the most challenging
+        environments, providing strategic advantages through cutting-edge artificial
+        intelligence and robust aerospace design.
+      </p>
+    </div>
+  </motion.div>
+
+  {/* --- Right Card: Features --- */}
+  <motion.div
+    variants={{
+      hidden: { opacity: 0, x: 100 },
+      show: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 70, damping: 15, delay: 0.2 } },
+    }}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    className="relative bg-charcoal-light border border-orange/30 rounded-2xl p-8 shadow-[0_0_20px_rgba(255,123,0,0.15)] glow-border flex flex-col justify-center h-full"
+  >
+    {[
+      {
+        icon: <Target />,
+        title: "Strategic Excellence",
+        text: "Purpose-built systems for mission-critical operations",
+      },
+      {
+        icon: <Zap />,
+        title: "Rapid Deployment",
+        text: "Quick response capabilities for time-sensitive scenarios",
+      },
+      {
+        icon: <Shield />,
+        title: "Unmatched Security",
+        text: "Encrypted communications and secure data handling",
+      },
+    ].map((item, i) => (
+      <motion.div
+        key={i}
+        variants={{
+          hidden: { opacity: 0, y: 30 },
+          show: { opacity: 1, y: 0, transition: { delay: 0.3 + i * 0.1 } },
+        }}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="flex items-start gap-4 mb-6 last:mb-0"
+      >
+        {React.cloneElement(item.icon, {
+          className:
+            "w-8 h-8 text-orange/70 group-hover:text-orange transition-colors duration-300",
+        })}
+        <div>
+          <h4 className="font-semibold text-lg mb-2 text-white/90">
+            {item.title}
+          </h4>
+          <p className="text-white/60 text-sm">{item.text}</p>
         </div>
+      </motion.div>
+    ))}
+  </motion.div>
+</div>
+
       </div>
     </SectionWrapper>
   );

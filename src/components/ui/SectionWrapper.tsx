@@ -21,6 +21,7 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
   };
 
   return (
+    
     <motion.section
       id={id}
       initial={{ opacity: 0 }}

@@ -1,18 +1,15 @@
-
-@import "tailwindcss/preflight"; 
-@import "tailwindcss/theme";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   * {
-    /* Use v4-style CSS variables */
-    border-color: var(--colors-border);
+    border-color: theme('colors.border');
   }
-  
+
   body {
-    /* Use v4-style CSS variables */
-    background-color: var(--colors-charcoal);
-    color: var(--colors-white);
+    background-color: theme('colors.charcoal.DEFAULT');
+    color: theme('colors.white');
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 
@@ -20,41 +17,37 @@
     scroll-behavior: smooth;
   }
 
-  /* --- All root styles moved inside @layer base --- */
-
-  /* Custom scrollbar (using your theme variables for consistency) */
+  /* --- Custom Scrollbar --- */
   ::-webkit-scrollbar {
     width: 10px;
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--colors-charcoal);
+    background: theme('colors.charcoal.DEFAULT');
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--colors-orange);
+    background: theme('colors.orange.DEFAULT');
     border-radius: 5px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--colors-orange-light);
+    background: theme('colors.orange.light');
   }
 
-  /* Selection color (using your theme variables for consistency) */
+  /* --- Text Selection --- */
   ::selection {
-    background-color: var(--colors-orange);
-    color: var(--colors-white);
+    background-color: theme('colors.orange.DEFAULT');
+    color: theme('colors.white');
   }
 
   ::-moz-selection {
-    background-color: var(--colors-orange);
-    color: var(--colors-white);
+    background-color: theme('colors.orange.DEFAULT');
+    color: theme('colors.white');
   }
-} /* <-- @layer base ends here */
-
+}
 
 @layer utilities {
-  /* This entire section was already correct and needs no changes */
   .container-custom {
     max-width: 80rem;
     margin-left: auto;
@@ -104,9 +97,10 @@
   }
 
   .glow-border {
-    border: 1px solid rgba(255, 123, 0, 0.3);
-    box-shadow: 0 0 15px rgba(255, 123, 0, 0.3);
-  }
+  border: 1px solid rgba(255, 123, 0, 0.25);
+  box-shadow: 0 0 10px rgba(255, 123, 0, 0.15);
+}
+
 
   .grid-bg {
     background-image: 

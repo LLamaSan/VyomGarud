@@ -17,7 +17,7 @@ export const COMPANY_INFO: CompanyInfo = {
   tagline: "Precision Engineering. Advanced Autonomy. Unmatched Reliability.",
   description: "Leading the future of unmanned aerial systems with military-grade precision and cutting-edge autonomous technology designed for critical defense operations.",
   email: "contact@vyomgarud.com",
-  phone: "+91 8881444693",
+  phone: "+91 1234567890",
 };
 
 // --- Updated CAPABILITIES with Lucide icons ---

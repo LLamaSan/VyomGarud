@@ -1,17 +1,15 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx,}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        border: {
-          DEFAULT: '#2a2a2a'
-        },
+        border: '#2a2a2a',
         charcoal: {
           DEFAULT: '#1a1a1a',
           light: '#2a2a2a',
@@ -25,15 +23,15 @@ const config: Config = {
         white: '#ffffff',
       },
       fontFamily: {
-        poppins: ['var(--font-poppins)', 'sans-serif'],
-        inter: ['var(--font-inter)', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',
         'slide-up': 'slideUp 0.6s ease-out',
         'slide-in': 'slideIn 0.8s ease-out',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'float': 'float 3s ease-in-out infinite',
+        glow: 'glow 2s ease-in-out infinite alternate',
+        float: 'float 3s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -50,7 +48,10 @@ const config: Config = {
         },
         glow: {
           '0%': { boxShadow: '0 0 5px #ff7b00, 0 0 10px #ff7b00' },
-          '100%': { boxShadow: '0 0 10px #ff7b00, 0 0 20px #ff7b00, 0 0 30px #ff7b00' },
+          '100%': {
+            boxShadow:
+              '0 0 10px #ff7b00, 0 0 20px #ff7b00, 0 0 30px #ff7b00',
+          },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
@@ -58,7 +59,8 @@ const config: Config = {
         },
       },
       backgroundImage: {
-        'grid-pattern': 'linear-gradient(to right, #2a2a2a 1px, transparent 1px), linear-gradient(to bottom, #2a2a2a 1px, transparent 1px)',
+        'grid-pattern':
+          'linear-gradient(to right, #2a2a2a 1px, transparent 1px), linear-gradient(to bottom, #2a2a2a 1px, transparent 1px)',
       },
     },
   },

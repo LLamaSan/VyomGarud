@@ -3,38 +3,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
-import { Card } from '@/components/ui/Card';
 import { CAPABILITIES } from '@/lib/constants';
-import { fadeInUp, staggerContainer } from '@/lib/animations';
-// Import icons. You'll need to update your CAPABILITIES constant to use these.
-import { BrainCircuit, Signal, Crosshair, Package } from 'lucide-react';
-
-// --- IMPORTANT ---
-// You MUST update your `lib/constants.ts` file.
-// The `CAPABILITIES` array should now use components instead of emoji strings.
-//
-// Example:
-// export const CAPABILITIES = [
-//   {
-//     id: 'ai',
-//     title: 'Autonomous AI',
-//     description: '...',
-//     icon: <BrainCircuit className="w-16 h-16" /> 
-//   },
-//   {
-//     id: 'comms',
-//     title: 'Secure Comms',
-//     description: '...',
-//     icon: <Signal className="w-16 h-16" />
-//   },
-//   // etc.
-// ];
-//
-// I've written the code below assuming you've made this change.
+import {
+  fadeInUp,
+  staggerContainer,
+  childFadeUp,
+} from '@/lib/animations';
 
 export const Capabilities: React.FC = () => {
   return (
     <SectionWrapper id="capabilities" background="gradient">
+      {/* --- Section Heading --- */}
       <motion.div
         variants={fadeInUp}
         initial="initial"
@@ -51,35 +30,69 @@ export const Capabilities: React.FC = () => {
         </p>
       </motion.div>
 
+      {/* Cards Grid  */}
       <motion.div
         variants={staggerContainer}
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+        className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 overflow-visible"
       >
         {CAPABILITIES.map((capability, index) => (
-          // We use the 'card-hover' utility class from your Global.css
-          // (transform: scale(1.05) and box-shadow)
-          // This is much better than the 360 rotate.
-          <Card key={capability.id} delay={index * 0.1} className="card-hover">
-            <div className="text-center">
-              {/* This div now renders the icon component from your constant.
-                We give it an orange color and a subtle 'float' animation.
-              */}
-              <div
-                className="text-orange mb-6 inline-block animate-float"
+          <motion.div
+            key={capability.id}
+            variants={childFadeUp}
+            whileHover={{
+              scale: 1.05,
+              y: -8,
+              boxShadow: '0 8px 25px rgba(255,123,0,0.25)',
+            }}
+            transition={{
+              type: 'spring',
+              stiffness: 250,
+              damping: 18,
+            }}
+            className="rounded-2xl"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  delay: index * 0.1,
+                  duration: 0.5,
+                  ease: 'easeOut',
+                },
+              }}
+              viewport={{ once: true }}
+              className="h-full bg-charcoal-light border border-orange/30 rounded-xl p-6 text-center glow-border flex flex-col justify-between overflow-visible"
+            >
+              <motion.div
+                initial={{ y: 15, opacity: 0 }}
+                whileInView={{
+                  y: 0,
+                  opacity: 1,
+                  transition: {
+                    delay: 0.2 + index * 0.1,
+                    duration: 0.4,
+                    ease: 'easeOut',
+                  },
+                }}
+                viewport={{ once: true }}
+                className="text-orange mb-6 inline-block"
               >
                 {capability.icon}
-              </div>
+              </motion.div>
+
               <h3 className="text-xl font-semibold mb-3 text-orange">
                 {capability.title}
               </h3>
               <p className="text-white/60 text-sm leading-relaxed">
                 {capability.description}
               </p>
-            </div>
-          </Card>
+            </motion.div>
+          </motion.div>
         ))}
       </motion.div>
     </SectionWrapper>
