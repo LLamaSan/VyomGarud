@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/Button';
 import { COMPANY_INFO } from '@/lib/constants';
 import { fadeInUp, slideInLeft, slideInRight } from '@/lib/animations';
 import { ContactFormData } from '@/types';
+// Import icons to replace emojis
+import { Mail, Phone, Building, Scan, Check } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -50,11 +52,11 @@ export const Contact: React.FC = () => {
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white/90">
           Get in <span className="gradient-text">Touch</span>
         </h2>
-        <div className="w-24 h-1 bg-orange mx-auto mb-6"></div>
-        <p className="text-gray-400 max-w-2xl mx-auto">
+        <div className="w-24 h-1 bg-gradient-to-r from-charcoal-light via-orange to-charcoal-light mx-auto mb-6"></div>
+        <p className="text-white/60 max-w-2xl mx-auto">
           Ready to elevate your defense capabilities? Contact us to discuss your requirements
         </p>
       </motion.div>
@@ -72,20 +74,21 @@ export const Contact: React.FC = () => {
             <h3 className="text-2xl font-bold mb-6 gradient-text">
               Contact Information
             </h3>
-            <p className="text-gray-400 mb-8">
+            <p className="text-white/60 mb-8">
               Reach out to our team for inquiries about our UAV systems, partnerships, 
               or technical specifications.
             </p>
           </div>
 
           <div className="space-y-6">
+            {/* Replaced 📧 with Lucide 'Mail' icon */}
             <motion.div
               whileHover={{ x: 10 }}
-              className="flex items-start gap-4 p-4 bg-charcoal-light rounded-lg border border-orange/20 hover:border-orange/50 transition-colors"
+              className="flex items-center gap-4 p-4 bg-charcoal-light rounded-lg border border-orange/20 hover:border-orange/50 transition-colors"
             >
-              <div className="text-3xl">📧</div>
+              <Mail className="w-6 h-6 text-orange" />
               <div>
-                <h4 className="font-semibold mb-1">Email</h4>
+                <h4 className="font-semibold mb-1 text-white/90">Email</h4>
                 <a 
                   href={`mailto:${COMPANY_INFO.email}`}
                   className="text-orange hover:text-orange-light transition-colors"
@@ -95,13 +98,14 @@ export const Contact: React.FC = () => {
               </div>
             </motion.div>
 
+            {/* Replaced 📞 with Lucide 'Phone' icon */}
             <motion.div
               whileHover={{ x: 10 }}
-              className="flex items-start gap-4 p-4 bg-charcoal-light rounded-lg border border-orange/20 hover:border-orange/50 transition-colors"
+              className="flex items-center gap-4 p-4 bg-charcoal-light rounded-lg border border-orange/20 hover:border-orange/50 transition-colors"
             >
-              <div className="text-3xl">📞</div>
+              <Phone className="w-6 h-6 text-orange" />
               <div>
-                <h4 className="font-semibold mb-1">Phone</h4>
+                <h4 className="font-semibold mb-1 text-white/90">Phone</h4>
                 <a 
                   href={`tel:${COMPANY_INFO.phone}`}
                   className="text-orange hover:text-orange-light transition-colors"
@@ -111,31 +115,29 @@ export const Contact: React.FC = () => {
               </div>
             </motion.div>
 
+            {/* Replaced 🏢 with Lucide 'Building' icon */}
             <motion.div
               whileHover={{ x: 10 }}
-              className="flex items-start gap-4 p-4 bg-charcoal-light rounded-lg border border-orange/20 hover:border-orange/50 transition-colors"
+              className="flex items-center gap-4 p-4 bg-charcoal-light rounded-lg border border-orange/20 hover:border-orange/50 transition-colors"
             >
-              <div className="text-3xl">🏢</div>
+              <Building className="w-6 h-6 text-orange" />
               <div>
-                <h4 className="font-semibold mb-1">Headquarters</h4>
-                <p className="text-gray-400">India</p>
+                <h4 className="font-semibold mb-1 text-white/90">Headquarters</h4>
+                <p className="text-white/60">India</p>
               </div>
             </motion.div>
           </div>
 
-          {/* Decorative Element */}
+          {/* REMOVED the rotating 🛸 emoji.
+            Replaced with a large, slow-spinning, abstract 'Scan' icon.
+            This feels infinitely more "tech" and "military-grade".
+          */}
           <motion.div
-            animate={{
-              rotate: 360,
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="mt-8 text-8xl opacity-20"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="mt-12 text-orange/10 flex justify-center"
           >
-            🛸
+            <Scan className="w-48 h-48" />
           </motion.div>
         </motion.div>
 
@@ -148,7 +150,7 @@ export const Contact: React.FC = () => {
         >
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-2">
+              <label htmlFor="name" className="block text-sm font-medium mb-2 text-white/70">
                 Full Name *
               </label>
               <input
@@ -158,13 +160,13 @@ export const Contact: React.FC = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-charcoal-light border border-orange/30 rounded-lg focus:outline-none focus:border-orange transition-colors text-white"
+                className="w-full px-4 py-3 bg-charcoal-light border border-orange/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/50 transition-all text-white"
                 placeholder="John Doe"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
+              <label htmlFor="email" className="block text-sm font-medium mb-2 text-white/70">
                 Email Address *
               </label>
               <input
@@ -174,13 +176,13 @@ export const Contact: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-charcoal-light border border-orange/30 rounded-lg focus:outline-none focus:border-orange transition-colors text-white"
+                className="w-full px-4 py-3 bg-charcoal-light border border-orange/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/50 transition-all text-white"
                 placeholder="john@company.com"
               />
             </div>
 
             <div>
-              <label htmlFor="company" className="block text-sm font-medium mb-2">
+              <label htmlFor="company" className="block text-sm font-medium mb-2 text-white/70">
                 Company / Organization
               </label>
               <input
@@ -189,13 +191,13 @@ export const Contact: React.FC = () => {
                 name="company"
                 value={formData.company}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-charcoal-light border border-orange/30 rounded-lg focus:outline-none focus:border-orange transition-colors text-white"
+                className="w-full px-4 py-3 bg-charcoal-light border border-orange/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/50 transition-all text-white"
                 placeholder="Your Organization"
               />
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-2">
+              <label htmlFor="message" className="block text-sm font-medium mb-2 text-white/70">
                 Message *
               </label>
               <textarea
@@ -205,17 +207,19 @@ export const Contact: React.FC = () => {
                 onChange={handleChange}
                 required
                 rows={5}
-                className="w-full px-4 py-3 bg-charcoal-light border border-orange/30 rounded-lg focus:outline-none focus:border-orange transition-colors text-white resize-none"
+                className="w-full px-4 py-3 bg-charcoal-light border border-orange/30 rounded-lg focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/50 transition-all text-white resize-none"
                 placeholder="Tell us about your requirements..."
               />
             </div>
 
+            {/* Re-styled the success message to be on-brand (orange, not green) */}
             {submitStatus === 'success' && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-400"
+                className="flex items-center gap-3 p-4 bg-orange/10 border border-orange/30 rounded-lg text-orange-light"
               >
+                <Check className="w-5 h-5" />
                 ✓ Message sent successfully! We'll get back to you soon.
               </motion.div>
             )}

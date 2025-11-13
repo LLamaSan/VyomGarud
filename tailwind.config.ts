@@ -4,11 +4,14 @@ const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx,}",
   ],
   theme: {
     extend: {
       colors: {
+        border: {
+          DEFAULT: '#2a2a2a'
+        },
         charcoal: {
           DEFAULT: '#1a1a1a',
           light: '#2a2a2a',
@@ -19,6 +22,7 @@ const config: Config = {
           light: '#ff9933',
           dark: '#cc6200',
         },
+        white: '#ffffff',
       },
       fontFamily: {
         poppins: ['var(--font-poppins)', 'sans-serif'],
