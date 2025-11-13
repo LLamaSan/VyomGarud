@@ -1,22 +1,60 @@
-@import "tailwindcss";
+
+@import "tailwindcss/preflight"; 
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @layer base {
   * {
-    border-color: theme('colors.border');
+    /* Use v4-style CSS variables */
+    border-color: var(--colors-border);
   }
   
   body {
-    background-color: theme('colors.charcoal.DEFAULT');
-    color: theme('colors.white');
+    /* Use v4-style CSS variables */
+    background-color: var(--colors-charcoal);
+    color: var(--colors-white);
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 
   html {
     scroll-behavior: smooth;
   }
-}
+
+  /* --- All root styles moved inside @layer base --- */
+
+  /* Custom scrollbar (using your theme variables for consistency) */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--colors-charcoal);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--colors-orange);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--colors-orange-light);
+  }
+
+  /* Selection color (using your theme variables for consistency) */
+  ::selection {
+    background-color: var(--colors-orange);
+    color: var(--colors-white);
+  }
+
+  ::-moz-selection {
+    background-color: var(--colors-orange);
+    color: var(--colors-white);
+  }
+} /* <-- @layer base ends here */
+
 
 @layer utilities {
+  /* This entire section was already correct and needs no changes */
   .container-custom {
     max-width: 80rem;
     margin-left: auto;
@@ -101,33 +139,4 @@
   .animation-delay-600 {
     animation-delay: 0.6s;
   }
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #1a1a1a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #ff7b00;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #ff9933;
-}
-
-/* Selection color */
-::selection {
-  background-color: #ff7b00;
-  color: #ffffff;
-}
-
-::-moz-selection {
-  background-color: #ff7b00;
-  color: #ffffff;
 }
