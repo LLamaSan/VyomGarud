@@ -1,14 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: theme('colors.border');
   }
   
   body {
-    @apply bg-charcoal text-white;
+    background-color: theme('colors.charcoal.DEFAULT');
+    color: theme('colors.white');
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 
@@ -17,21 +16,58 @@
   }
 }
 
-@layer components {
+@layer utilities {
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-custom {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-custom {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 
   .section-padding {
-    @apply py-16 sm:py-20 lg:py-24;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-padding {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-orange to-orange-light bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, #ff7b00, #ff9933);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 
   .glow-border {
-    @apply border border-orange/30 shadow-[0_0_15px_rgba(255,123,0,0.3)];
+    border: 1px solid rgba(255, 123, 0, 0.3);
+    box-shadow: 0 0 15px rgba(255, 123, 0, 0.3);
   }
 
   .grid-bg {
@@ -42,11 +78,14 @@
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,123,0,0.3)];
+    transition: all 0.3s ease;
   }
-}
 
-@layer utilities {
+  .card-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 123, 0, 0.3);
+  }
+
   .text-balance {
     text-wrap: balance;
   }
