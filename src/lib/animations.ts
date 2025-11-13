@@ -116,3 +116,21 @@ export const childFadeUp: Variants = {
   initial: { opacity: 0, y: 15 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.4 } }
 };
+
+ export const slideLeft = {
+    hidden: { opacity: 0, x: -100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { type: "spring", stiffness: 70, damping: 15 },
+    },
+  };
+
+ export const slideRight = {
+    hidden: { opacity: 0, x: 100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { type: "spring", stiffness: 70, damping: 15, delay: 0.1 },
+    },
+  };

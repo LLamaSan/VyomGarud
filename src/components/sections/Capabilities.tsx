@@ -52,7 +52,7 @@ export const Capabilities: React.FC = () => {
               stiffness: 250,
               damping: 18,
             }}
-            className="rounded-2xl"
+            className="rounded-2xl relative neon-border bg-charcoal-light p-2 cursor-pointer"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
