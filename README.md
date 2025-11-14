@@ -28,3 +28,26 @@ It features a defense-themed, militaristic aesthetic with tactical animations, n
 ```bash
 git clone https://github.com/LLamaSan/vyomgarud.git
 cd vyomgarud
+```
+
+### Install Dependencies
+
+### Using Bun (Recommended):
+```bash
+bun install 
+```
+
+### Using npm:
+```bash
+npm install
+```
+
+### Run development server with Bun (Recommended)
+```bash
+bun dev 
+```
+
+### Run development server with npm
+```bash
+npm dev 
+```
