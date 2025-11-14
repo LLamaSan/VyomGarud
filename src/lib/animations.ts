@@ -134,3 +134,13 @@ export const childFadeUp: Variants = {
       transition: { type: "spring", stiffness: 70, damping: 15, delay: 0.1 },
     },
   };
+
+export const chooseVariants = {
+  hidden: { opacity: 0, y: 40, rotateX: 6 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    rotateX: 0,
+    transition: { duration: 0.8, ease: "easeOut" } 
+  },
+};

@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+          
           <div>
             <h4 className="text-lg font-semibold mb-4 text-orange">Quick Links</h4>
             <ul className="space-y-3">
@@ -114,13 +114,13 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        
         <div className="pt-8 border-t border-orange/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/60 text-sm">
               © {currentYear} {COMPANY_INFO.name}. All rights reserved.
             </p> 
-            {/* --- FIX: Corrected closing tag --- */}
+            
             <div className="flex gap-6 text-sm">
               <button className="text-white/60 hover:text-orange transition-colors">
                 Privacy Policy
@@ -133,7 +133,7 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Decorative Bottom Line (Kept your awesome animation, just cleaned up the class) */}
+      
       <motion.div
         animate={{
           backgroundPosition: ['0% 0%', '100% 0%'],
@@ -142,7 +142,7 @@ export const Footer: React.FC = () => {
           duration: 3,
           repeat: Infinity,
           ease: "linear",
-          repeatType: "reverse", // Makes it scan back and forth
+          repeatType: "reverse", 
         }}
         className="h-1 bg-linear-to-r from-transparent via-orange to-transparent [background-size:200%_100%]"
       />

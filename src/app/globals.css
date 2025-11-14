@@ -162,3 +162,51 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+
+.neon-border-strong {
+  position: relative;
+  border: 1px solid rgba(255, 123, 0, 0.6);
+  overflow: hidden;
+}
+
+.neon-border-strong::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(135deg, #ff7b00, #ffb300, #ff7b00);
+  filter: blur(16px);
+  opacity: 0.75;
+  z-index: -1;
+  animation: neon-rotate 8s linear infinite;
+}
+
+@keyframes neon-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+.card-trace::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 2px;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(255, 123, 0, 0.7), 
+    transparent
+  );
+  animation: trace-line 3s ease-in-out infinite;
+}
+
+@keyframes trace-line {
+  0% { left: -120%; }
+  50% { left: 120%; }
+  100% { left: 120%; }
+}
+
